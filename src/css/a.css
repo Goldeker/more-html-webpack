@@ -1,0 +1,14 @@
+
+.bg {
+  background: url('../image/a.jpg')
+}
+
+.out {
+	.inner {
+		color: #333;
+	}
+}
+
+.out {
+	font-size: 60px;
+}
