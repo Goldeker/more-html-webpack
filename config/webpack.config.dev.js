@@ -9,16 +9,9 @@ const webpackBase = require("./webpack.config.base");
 const webpackMerge = require("webpack-merge");
 // 引入配置文件
 const config = require("./config");
-//输出文件
-const tempObj = webpackMerge(webpackBase,{
-     output: {
-        filename: "js/[name][hash].js",
-        path: path.resolve(__dirname, "../dist"),
-        publicPath: '/'
-    }
-})
+
 // 合并配置文件
-module.exports = webpackMerge(tempObj,{
+module.exports = webpackMerge(webpackBase,{
     // 插件
     plugins: [
     //   new webpack.NamedModulesPlugin(),

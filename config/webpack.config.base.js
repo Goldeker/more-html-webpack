@@ -41,11 +41,12 @@ module.exports = {
   // 启用 sourceMap
   // devtool: "cheap-module-source-map",
   // 输出文件
-  // output: {
-  //   filename: "js/[name][hash].js",
-  //   path: path.resolve(__dirname, "../dist"),
-  //   publicPath: '/'
-  // },
+  output: {
+    filename: "js/[name][hash].js",
+    path: path.resolve(__dirname, "../dist"),
+    // publicPath: '/'
+    publicPath:env=='prod'? './' : '/'
+  },
   resolve: {
     extensions: ['.js'] // 配置简写，配置过后，书写该文件路径的时候可以省略文件后缀
   },

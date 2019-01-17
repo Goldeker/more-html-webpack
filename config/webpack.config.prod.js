@@ -13,16 +13,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpackMerge = require("webpack-merge");
 // 清理 dist 文件夹
 const CleanWebpackPlugin = require("clean-webpack-plugin")
-//输出文件
-const tempObj = webpackMerge(webpackBase,{
-     output: {
-        filename: "js/[name][hash].js",
-        path: path.resolve(__dirname, "../dist"),
-        publicPath: './'
-    }
-})
+
 // 合并配置文件
-module.exports = webpackMerge(tempObj,{
+module.exports = webpackMerge(webpackBase,{
     plugins:[
         new ExtractTextPlugin({
             filename: 'css/[name][hash].css'
