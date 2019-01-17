@@ -91,7 +91,7 @@ module.exports = {
             fallback: 'style-loader',
             use: ['css-loader','less-loader'] //编译less
           })
-          : ['style-loader', 'css-loader']
+          : ['style-loader','css-loader','less-loader']
       },
       {
         test: /\.js$/,
