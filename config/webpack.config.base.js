@@ -20,19 +20,32 @@ let HTMLPlugins = [];
 let Entries = {}
 
 // 生成多页面的集合
-config.HTMLDirs.forEach((page) => {
-  const htmlPlugin = new HTMLWebpackPlugin({
-    filename: `${page}.html`,
-    template: path.resolve(__dirname, `../src/${page}.html`),
-    chunks: [page, 'commons'],
-    // minify: {
-    //   "removeAttributeQuotes": true,
-    //   "removeComments": true,
-    //   "removeEmptyAttributes": true,
-    // }
-  });
-  HTMLPlugins.push(htmlPlugin);
-  Entries[page] = path.resolve(__dirname, `../src/js/${page}.js`);
+// config.HTMLDirs.forEach((page) => {
+//   const htmlPlugin = new HTMLWebpackPlugin({
+//     filename: `${page}.html`,
+//     template: path.resolve(__dirname, `../src/${page}.html`),
+//     // chunks: [page, 'commons'],
+//     // minify: {
+//     //   "removeAttributeQuotes": true,
+//     //   "removeComments": true,
+//     //   "removeEmptyAttributes": true,
+//     // }
+//     chunks:[...config.jsToHtml[page],'commons']
+//   });
+//   HTMLPlugins.push(htmlPlugin);
+// })
+
+// 生成多页面的集合
+for(let page in config.jsToHtml) {
+    const htmlPlugin = new HTMLWebpackPlugin({
+      filename: `${page}.html`,
+      template: path.resolve(__dirname, `../src/${page}.html`),
+      chunks:[...config.jsToHtml[page],'commons']
+    });
+    HTMLPlugins.push(htmlPlugin);
+}
+config.jsFilename.forEach((item) => {
+    Entries[item] = path.resolve(__dirname, `../src/js/${item}.js`);
 })
 
 module.exports = {
