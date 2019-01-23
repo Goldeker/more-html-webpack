@@ -16,6 +16,9 @@ module.exports = webpackMerge(webpackBase,{
     plugins: [
     //   new webpack.NamedModulesPlugin(),
     //   new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin({
+            filename: 'css/[name][hash].css'
+        }),
     ],
     // 配置 webpack-dev-server
     devServer:{
