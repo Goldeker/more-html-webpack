@@ -9,6 +9,8 @@ const webpackBase = require("./webpack.config.base");
 const webpackMerge = require("webpack-merge");
 // 引入配置文件
 const config = require("./config");
+//  提取css
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // 合并配置文件
 module.exports = webpackMerge(webpackBase,{
